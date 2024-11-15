@@ -1,4 +1,5 @@
 from os import path
+from views.home_view import HomeView
 import pytest
 from appium.options.android import UiAutomator2Options
 from appium import webdriver
@@ -22,3 +23,7 @@ def driver():
     driver = webdriver.Remote(command_executor=command_executor, options=options)
     yield driver
     driver.quit()
+
+@pytest.fixture
+def home(driver):
+    return HomeView(driver)
