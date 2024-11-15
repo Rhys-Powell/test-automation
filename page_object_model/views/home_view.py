@@ -1,12 +1,10 @@
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from views.base_view import BaseView
+from views.echo_view import EchoView
 
-class HomeView(object):
+class HomeView(BaseView):
     ECHO_ITEM = (AppiumBy.ACCESSIBILITY_ID, 'Echo Box')
-    def __init__(self, driver):
-        self.driver = driver 
-
+    
     def nav_to_echo_box(self):
-        wait = WebDriverWait(self.driver, 10)
-        wait.until(EC.presence_of_element_located(self.ECHO_ITEM)).click()
+        self.wait_for(self.ECHO_ITEM).click()
+        return EchoView(self.driver)
