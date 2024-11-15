@@ -1,2 +1,5 @@
 #Command to start appium local server with permission to download correct chromedriver
 appium --allow-insecure=chromedriver_autodownload
+
+#Save python libraries with current version to a file
+pip freeze > requirements.txt
