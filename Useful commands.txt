@@ -1,5 +1,28 @@
 #Command to start appium local server with permission to download correct chromedriver
+
 appium --allow-insecure=chromedriver_autodownload
 
+
 #Save python libraries with current version to a file
+
 pip freeze > requirements.txt
+
+
+#wdaLocalPort is only for ios, systemPort is for android
+
+appium -p 4700 --default-capabilities '{"wdaLocalPort": 8100, "systemPort": 8200}'
+
+#However JSON cannot be easily included in above command in Windows due to it's handling of quotes. I only got this working by creating a json file and referencing that file instead:
+
+appium -p 4700 --default-capabilities ".\appium-capabilities.json"
+
+
+#Running parallel tests on multiple emulated devices
+#Command to get ADB name (might return e.g. emulator-5554 emulator-5556)
+
+adb devices
+
+
+#Command to work out which emulated device each ADB name refers to
+
+adb -s emulator-5554 emu avd name

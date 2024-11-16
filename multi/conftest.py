@@ -44,6 +44,7 @@ def driver(platform):
     options.device_name = PLATFORMS[platform]['device_name']
     options.app = PLATFORMS[platform]['app']
 
+    print("options: ", vars(options))
     driver = webdriver.Remote(command_executor=command_executor, options=options)
     driver._platform = platform
     yield driver
